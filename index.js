@@ -27,9 +27,17 @@ function processFirstItem(stringList, callback) {
  *
  * 1. What is the difference between counter1 and counter2?
  *
+ *  counter1 is a function declaration. it takes a function with a closure which has state.  and holds the count incrementation. counter2 just increments every time the function is called.
+ *
  * 2. Which of the two uses a closure? How can you tell?
  *
+ * counter1 becuase counterMaker has a function that returs itself
+ *
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ *
+ * counter1 is best if you were making a clock.it would know the time at any interval.
+ * counter2 would be best if you just want a pice of functionality that increments 1 time. like every time a politicin says something stupid using the VADER lexicon.
+ *
  *
  */
 
@@ -108,11 +116,10 @@ function scoreBoard(inning, innings) {
   let scoreHome = 0;
   let scoreAway = 0;
 
-  for (let i = 0; i <= innings; i++) {
+  for (let i = 1; i <= innings; i++) {
     scoreHome += inning();
-    console.log(`Home: ${scoreHome}`);
     scoreAway += inning();
-    console.log(`Away:${scoreAway}`);
+    console.log(`| Inning ${i} | Home: ${scoreHome} | Away:${scoreAway} |`);
   }
 }
 scoreBoard(inning, 9);
